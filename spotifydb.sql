@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict NgM4o9bNFb92DnU3IcV5KgkCs7WF85ZWzV8WvhdReJLa3oVmsbaGW9cYUMkAadP
+\restrict jKjenInkgFBPBbHtyLrk0u2Pv772PxdB5fSWEb6Urn7nC79gJVnaNYxxKjXvgSE
 
 -- Dumped from database version 16.13
 -- Dumped by pg_dump version 16.13
@@ -147,7 +147,8 @@ CREATE TABLE public.stg_spotify_raw (
     raw_id integer NOT NULL,
     endpoint text NOT NULL,
     payload jsonb NOT NULL,
-    extracted_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
+    extracted_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    http_status integer
 );
 
 
@@ -203,7 +204,7 @@ COPY public.facts_streams (stream_id, track_key, user_key, artist_key, played_at
 -- Data for Name: stg_spotify_raw; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.stg_spotify_raw (raw_id, endpoint, payload, extracted_at) FROM stdin;
+COPY public.stg_spotify_raw (raw_id, endpoint, payload, extracted_at, http_status) FROM stdin;
 \.
 
 
@@ -334,5 +335,5 @@ ALTER TABLE ONLY public.facts_streams
 -- PostgreSQL database dump complete
 --
 
-\unrestrict NgM4o9bNFb92DnU3IcV5KgkCs7WF85ZWzV8WvhdReJLa3oVmsbaGW9cYUMkAadP
+\unrestrict jKjenInkgFBPBbHtyLrk0u2Pv772PxdB5fSWEb6Urn7nC79gJVnaNYxxKjXvgSE
 
