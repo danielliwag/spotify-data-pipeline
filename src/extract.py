@@ -1,18 +1,26 @@
 import requests
-import pandas as pd
-from src.auth import get_access_token
+from psycopg2.extras import Json
+from src.config import get_access_token
 
 
-def extract_album(album_id):
-    access_token = get_access_token()
-    headers = {'Authorization': f'Bearer {access_token}'}
-    url = f'https://api.spotify.com/v1/albums/{album_id}'
+def extract_apidata(endpoint, after_ms=None):
+    try:
+        access_token = get_access_token()
+        headers = {'Authorization': f'Bearer {access_token}'}
+        url = f'https://api.spotify.com/v1/{endpoint}'
 
-    response = requests.get(url, headers=headers)
-    api_data = response.json()
+        params = {'limit': 50}
+        if after_ms:
+            params['after'] = after_ms
 
-    data = pd.json_normalize(api_data)
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        api_data = response.json()
 
-    album_df = pd.DataFrame(data)
-    
-    return album_df
+        return endpoint, Json(api_data), response.status_code
+
+    except Exception as e:
+        print(f'An error occured: {e}')
+        return None
+
+
