@@ -14,3 +14,4 @@ def dump_apidata(apidata_tuple):
     with psycopg2.connect(**db_params) as conn:
         with conn.cursor() as cur:
             cur.execute(query, apidata_tuple)
+        conn.commit()
