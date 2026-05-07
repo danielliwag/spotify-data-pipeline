@@ -1,17 +1,17 @@
 import os
 import requests
 import spotipy
-from spotify.oauth2 import SpotifyOAuth
+from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
 
 load_dotenv()
 
-def get_access_token():
+def get_access():
     return spotipy.Spotify(auth_manager=SpotifyOAuth(
-        client_id=os.getenv('CLIENT_ID'),
-        client_secret=os.getenv('CLIENT_SECRET'),
+        client_id= os.getenv('CLIENT_ID'),
+        client_secret= os.getenv('CLIENT_SECRET'),
         redirect_uri= os.getenv('REDIRECT_URI'),
-        scope="user-read-recently-played"
+        scope= os.getenv('SCOPE')
     ))
 
 def get_db_config():
