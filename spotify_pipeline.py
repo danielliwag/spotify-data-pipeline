@@ -1,5 +1,13 @@
-from src.extract import extract_album
+from src.extract import extract_apidata, get_cursor
+from src.load import dump_apidata
 
 if __name__ == "__main__":
-    df = extract_album('4aawyAB9vmqN3uQ7FjRGTy')
-    print(df.columns)
+
+    last_dt = get_cursor()
+
+    extracted_tuple = extract_apidata('me/player/recently-played', last_dt)
+    print(extracted_tuple)
+    if extracted_tuple:
+        dump_apidata(extracted_tuple)
+        print("Done!")
+
