@@ -1,4 +1,4 @@
-import requests
+import spotipy
 import psycopg2
 from psycopg2.extras import Json
 from src.config import get_access, get_db_config
