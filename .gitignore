@@ -1,6 +1,10 @@
 .env
 .venv
 src/__pycache__/
+<<<<<<< HEAD
 .vscode/
 .cache
 
+=======
+.vscode/
+>>>>>>> 833b37e (added new libraries in the text file)
