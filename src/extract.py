@@ -11,10 +11,12 @@ def extract_apidata(endpoint, latest_dt):
     try:
         raw_data = sp.current_user_recently_played(limit=50, after=latest_dt)
 
-        return endpoint, Json(raw_data), 200
+        return endpoint, Json(raw_data)
 
     except spotipy.exceptions.SpotifyException as e:
         print(f'Error occurred: {e.http_status} - {e.msg}')
+        return None
+    
     except Exception as e:
         print(f'An error occured: {e}')
         return None
@@ -35,11 +37,7 @@ def get_cursor():
                 result = cur.fetchone()
                 
                 if result and result[0]:
-                    # result[0] is already a Python datetime object thanks to psycopg2
                     dt_object = result[0]
-                    
-                    # Spotify needs MILLISECONDS as an integer
-                    # Using .timestamp() gives seconds, so we multiply by 1000
                     return int(dt_object.timestamp() * 1000)
                 
                 return None

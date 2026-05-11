@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: spotify
+    database: spotifydb
+    schema: public     
+    tables:
+      - name: stg_spotify_raw
