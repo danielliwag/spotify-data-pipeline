@@ -3,6 +3,7 @@
 src/__pycache__/
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .vscode/
 .cache
 
@@ -13,3 +14,7 @@ src/__pycache__/
 .vscode/
 .cache
 >>>>>>> 54310b3 (created staging and marts folder for dbt)
+=======
+.vscode/
+.cache/
+>>>>>>> 75e50b8 (remove the .cache file and add to .gitignore for new .cache)
