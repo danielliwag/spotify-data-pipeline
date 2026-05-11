@@ -1,9 +1,6 @@
 .env
 .venv
 src/__pycache__/
-<<<<<<< HEAD
 .vscode/
 .cache
-=======
-.vscode/
->>>>>>> bf860cff41015019e71e7bf3e565e0ec1658d300
+
