@@ -1,20 +1,5 @@
 .env
 .venv
 src/__pycache__/
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 .vscode/
 .cache
-
-=======
-.vscode/
->>>>>>> 833b37e (added new libraries in the text file)
-=======
-.vscode/
-.cache
->>>>>>> 54310b3 (created staging and marts folder for dbt)
-=======
-.vscode/
-.cache/
->>>>>>> 75e50b8 (remove the .cache file and add to .gitignore for new .cache)
