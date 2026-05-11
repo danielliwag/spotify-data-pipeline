@@ -7,7 +7,7 @@ if __name__ == "__main__":
 
     extracted_tuple = extract_apidata('me/player/recently-played', last_dt)
     print(extracted_tuple)
-    if extracted_tuple:
+    if extracted_tuple is not None:
         dump_apidata(extracted_tuple)
         print("Done!")
 
