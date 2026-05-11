@@ -8,12 +8,9 @@ WITH raw_data AS (
 ),
 
 flattened AS (
-    SELECT
+    SELECT DISTINCT ON (item->'track'->>'name')
         extracted_at,
-        -- Use ->> for text values
         (item->>'played_at')::timestamp as played_at,
-        
-        -- Navigating the nested track object
         item->'track'->>'id' as track_id,
         item->'track'->>'name' as track_name,
         (item->'track'->>'duration_ms')::int as duration_ms,
