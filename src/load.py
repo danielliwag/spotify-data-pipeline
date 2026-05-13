@@ -7,8 +7,8 @@ def dump_apidata(apidata_tuple):
     db_params = get_db_config()
 
     query = """
-    INSERT INTO stg_spotify_raw (endpoint, payload)
-    VALUES (%s, %s);
+    INSERT INTO stg_spotify_raw (endpoint, payload, user_id)
+    VALUES (%s, %s, %s);
     """
 
     with psycopg2.connect(**db_params) as conn:

@@ -1,4 +1,4 @@
-from src.extract import extract_apidata, get_cursor
+from src.extract import extract_apidata, get_cursor, get_user
 from src.load import dump_apidata
 
 if __name__ == "__main__":

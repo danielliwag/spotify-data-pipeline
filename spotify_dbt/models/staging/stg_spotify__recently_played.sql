@@ -7,8 +7,8 @@ WITH raw_data AS (
     FROM {{ source('spotify', 'stg_spotify_raw') }}
 ),
 
-flattened AS (
-    SELECT DISTINCT ON (item->'track'->>'name')
+flattened_recently_played AS (
+    SELECT
         extracted_at,
         (item->>'played_at')::timestamp as played_at,
         item->'track'->>'id' as track_id,
@@ -24,8 +24,12 @@ flattened AS (
         item->'track'->'album'->>'name' as album_name
 
     FROM raw_data,
-         -- This function expands the 'items' array into individual rows
          jsonb_array_elements(payload->'items') AS item
 )
 
-SELECT * FROM flattened
+SELECT DISTINCT ON (played_at, track_id)
+    * 
+ FROM
+    flattened_recently_played
+ORDER BY 
+    played_at, track_id, extracted_at DESC;
