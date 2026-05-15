@@ -10,7 +10,7 @@ WITH artist_data AS (
 )   
 
 SELECT
-    {{ dbt_utils.surrogate_key(['artist_id']) }} AS artist_key,
+    {{ dbt_utils.generate_surrogate_key(['artist_id']) }} AS artist_key,
     artist_id,
     artist_name
-FROM artist_data;
+FROM artist_data

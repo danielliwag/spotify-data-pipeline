@@ -12,11 +12,11 @@ WITH listens_data AS (
 )
 
 SELECT
-    {{ dbt_utils.surrogate_key(['user_id', 'track_id', 'played_at']) }} AS listen_key,
-    {{ dbt_utils.surrogate_key(['user_id']) }} AS user_key,
-    {{ dbt_utils.surrogate_key(['track_id']) }} AS track_key,
-    {{ dbt_utils.surrogate_key(['artist_id']) }} AS artist_key,
-    {{ dbt_utils.surrogate_key(['album_id']) }} AS album_key,
+    {{ dbt_utils.generate_surrogate_key(['user_id', 'track_id', 'played_at']) }} AS listen_key,
+    {{ dbt_utils.generate_surrogate_key(['user_id']) }} AS user_key,
+    {{ dbt_utils.generate_surrogate_key(['track_id']) }} AS track_key,
+    {{ dbt_utils.generate_surrogate_key(['artist_id']) }} AS artist_key,
+    {{ dbt_utils.generate_surrogate_key(['album_id']) }} AS album_key,
     played_at,
     duration_ms
-FROM listens_data;
+FROM listens_data
