@@ -1,0 +1,2 @@
+# Add dag files to exempt from parse test below. ex: dags/<test-file>
+dags/spotify_cosmos_pipeline.py

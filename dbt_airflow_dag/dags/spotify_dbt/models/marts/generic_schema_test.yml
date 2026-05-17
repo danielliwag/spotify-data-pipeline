@@ -1,0 +1,73 @@
+version: 2
+
+models:
+  - name: dim_user
+    description: 'List of Spotify user profiles'
+    columns:
+      - name: user_id
+        testss:
+          - unique
+          - not_null
+  
+  - name: dim_artist
+    description: 'List of artists'
+    columns:
+      - name: artist_id
+        tests:
+          - unique
+          - not_null
+  
+  - name: dim_album
+    description: 'List of albums'
+    columns:
+      - name: album_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_tracks
+    description: 'List of tracks'
+    columns:
+      - name: track_id
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_listens
+    description: 'Recently played history of every track play instance'
+    columns:
+      - name: listen_key
+        tests:
+          - unique
+          - not_null
+      - name: user_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_user')
+                field: user_key
+      - name: track_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_track')
+                field: track_key
+      - name: artist_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_artist')
+                field: artist_key
+      - name: album_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_album')
+                field: album_key
+      - name: duration_ms
+        tests:
+          - not_null

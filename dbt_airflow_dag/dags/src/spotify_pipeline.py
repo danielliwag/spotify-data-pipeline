@@ -1,8 +1,9 @@
-from src.extract import extract_apidata, get_cursor, get_user
-from src.load import dump_apidata
+from extract import extract_apidata, get_cursor
+from load import dump_apidata
 
-if __name__ == "__main__":
 
+
+def run_pipeline():
     cursor = get_cursor()
 
     extracted_tuple = extract_apidata('me/player/recently-played', cursor)
@@ -12,5 +13,4 @@ if __name__ == "__main__":
 
     else:
         dump_apidata(extracted_tuple)
-        print("Done!")
-
+    print("Done!")
