@@ -3,14 +3,17 @@ from src.load import dump_apidata
 
 if __name__ == "__main__":
 
-    cursor = get_cursor()
 
-    extracted_tuple = extract_apidata('me/player/recently-played', cursor)
+    def run_pipeline():
+        cursor = get_cursor()
+
+        extracted_tuple = extract_apidata('me/player/recently-played', cursor)
     
-    if extracted_tuple is None:
-        print("No new data to load. Exiting.")
+        if extracted_tuple is None:
+            print("No new data to load. Exiting.")
 
-    else:
-        dump_apidata(extracted_tuple)
-        print("Done!")
+        else:
+            dump_apidata(extracted_tuple)
+            print("Done!")
 
+    run_pipeline()
