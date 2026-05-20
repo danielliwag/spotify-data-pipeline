@@ -39,7 +39,7 @@ def spotify_cosmos_pipeline():
             target_name="dev",
             profile_mapping=PostgresUserPasswordProfileMapping(
                 conn_id="my_postgres_connection", 
-                profile_args={"schema": "public"},
+                profile_args={"schema": "daniel"},
             ),
         ),
         execution_config=ExecutionConfig(
@@ -47,8 +47,7 @@ def spotify_cosmos_pipeline():
         )
     )
 
-    # Establish the workflow link
     extract_and_load_raw >> transform_dbt
 
-# Instantiate the pipeline
+
 spotify_cosmos_pipeline()
