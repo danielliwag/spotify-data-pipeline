@@ -6,7 +6,7 @@ def dump_apidata(apidata_tuple):
     db_params = get_db_config()
 
     query = """
-    INSERT INTO stg_spotify_raw (endpoint, payload, user_info)
+    INSERT INTO daniel.stg_spotify_raw (payload, user_info, endpoint)
     VALUES (%s, %s, %s);
     """
 
