@@ -31,7 +31,7 @@ def extract_apidata(endpoint, cursor):
             print("Failed to retrieve user information.")
             return {}
 
-        return endpoint, Json(raw_data), Json(user_info)
+        return Json(raw_data), Json(user_info), endpoint
     
     except Exception as e:
         print(f'An error occured: {e}')
@@ -43,7 +43,7 @@ def get_cursor():
     
     query = """
     SELECT payload->'cursors'->>'after'
-    FROM stg_spotify_raw
+    FROM daniel.stg_spotify_raw
     WHERE payload->'cursors'->>'after' IS NOT NULL
     ORDER BY extracted_at DESC
     LIMIT 1;
