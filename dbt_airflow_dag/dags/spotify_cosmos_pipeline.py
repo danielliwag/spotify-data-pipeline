@@ -7,14 +7,10 @@ from cosmos import DbtTaskGroup, ProjectConfig, ProfileConfig, ExecutionConfig, 
 from cosmos.constants import LoadMode
 from cosmos.profiles import PostgresUserPasswordProfileMapping
 
-# Resolve paths relative to this DAG file's location inside Astro
-DAG_FOLDER = Path(__file__).parent
-sys.path.append(str(DAG_FOLDER / "src"))
-
-from spotify_pipeline import run_pipeline
+from include.src.spotify_pipeline import run_pipeline
 
 # Point Cosmos to dags/spotify_dbt
-DBT_PROJECT_PATH = DAG_FOLDER / "spotify_dbt"
+DBT_PROJECT_PATH = "/usr/local/airflow/include/spotify_dbt"
 
 @dag(
     start_date=datetime(2026, 5, 17),
@@ -33,7 +29,7 @@ def spotify_cosmos_pipeline():
     # Task 2: Cosmos dynamically turns your dbt models into visual check-steps
     transform_dbt = DbtTaskGroup(
         group_id="dbt_transforms",
-        project_config=ProjectConfig(DBT_PROJECT_PATH.as_posix()),
+        project_config=ProjectConfig(DBT_PROJECT_PATH),
         profile_config=ProfileConfig(
             profile_name="spotify_profile", 
             target_name="dev",

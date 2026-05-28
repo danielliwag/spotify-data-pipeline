@@ -1,6 +1,6 @@
 import psycopg2
 from psycopg2.extras import Json
-from config import get_access, get_db_config
+from include.src.config import get_access, get_db_config
 
 
 def get_user():
