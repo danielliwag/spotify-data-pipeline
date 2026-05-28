@@ -1,5 +1,5 @@
 import psycopg2
-from config import get_db_config
+from include.src.config import get_db_config
 
 
 def dump_apidata(apidata_tuple):
