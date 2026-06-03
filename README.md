@@ -1,4 +1,4 @@
-# Data Engineering Documentation: Spotify Listening History Pipeline
+# Spotify Listening History Pipeline
 
 ## 1. Document Control & Overview
 - **Project Name**: Spotify Data Pipeline
@@ -101,4 +101,43 @@ DB_NAME='database_name_here'
 DB_USER='database_user_here'
 DB_PASS='database_password_here'
 ```
+
+## 6. Data Quality & Error Handling
+To ensure the integrity of downstream dashboards, the pipeline employs proactive data validation:
+
+- API Rate Limiting: The Python extractor implements exponential backoff retry logic to handle Spotify's 429 Too Many Requests HTTP status gracefully.
+- dbt Tests: High-priority validations are compiled and tested every run within the Cosmos Task Group:
+  - not_null constraints.
+  - unique primary key validation.
+  - relationships referential integrity checks mapping Fact keys back to Dimension tables.
+
+## 7. Local Deployment & Run Guide
+**Prerequisites**
+- Docker & Docker Compose installed.
+- A registered application on the Spotify Developer Dashboard to obtain API Credentials.
+
+**Quickstart Execution** <br>
+1. Clone the repository and navigate to the project root directory. <br>
+2. Create and populate your local .env file based on the environment matrix section. <br>
+3. Create virtual environment and activate it: <br>
+```
+python -m venv .venv
+
+source .venv/Scripts/activate 
+```
+5. Install the packages inside requirements.txt: <br>
+```
+pip install -r requirements.txt
+```
+5. Open Docker Desktop and make sure engine <br>
+6. Navigate to the airflow directory <br>
+```
+cd dbt_airflow_dag
+```
+7. Spin up the localized stack infrastructure: <br>
+```
+astro dev start
+```
+8. Access the Airflow UI via http://localhost:8080 (Default credentials: admin / admin). <br>
+9. Unpause the *spotify_cosmos_pipeline* DAG to trigger the initial full backfill run. <br>
 
