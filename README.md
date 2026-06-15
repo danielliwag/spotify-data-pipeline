@@ -1,7 +1,7 @@
 # Spotify Listening History Pipeline
 
 ## 1. Document Control & Overview
-- **Project Name**: Spotify Data Pipeline
+- **Project Name**: Spotify Listening History Data Pipeline
 - **System Architecture Pattern**: ELT (Extract, Load, Transform) via Star Schema
 - **Language/Libraries**: Python 3, Spotipy, Psycopg2
 
