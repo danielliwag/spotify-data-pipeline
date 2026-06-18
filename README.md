@@ -53,21 +53,21 @@ SPOTIFY-DATA-PIPELINE/
 │   │   ├── .airflowignore            # Files for Airflow scheduler to ignore
 │   │   └── spotify_cosmos_pipeline.py # Main Airflow DAG orchestrating Cosmos
 │   ├── include/
-│   │   └── spotify_dbt/              # Core dbt project directory
-│   │       ├── analyses/
-│   │       ├── macros/
-│   │       ├── models/
-│   │       │   ├── marts/            # GOLD LAYER: Production Star Schema
-│   │       │   └── staging/          # SILVER LAYER: Conformed staging views
-│   │       ├── seeds/
-│   │       ├── snapshots/
-│   │       ├── tests/
-│   │       ├── .gitignore
-│   │       ├── dbt_project.yml       # dbt project configuration
-│   │       ├── package-lock.yml
-│   │       ├── packages.yml          # External dbt packages
-│   │       └── README.md
-│   ├── src/                          # Custom Python scripts / BRONZE LAYER: Insert raw API response to staging table
+│       └── spotify_dbt/              # Core dbt project directory
+│       │   ├── analyses/
+│       │   ├── macros/
+│       │   ├── models/
+│       │   │   ├── marts/            # GOLD LAYER: Production Star Schema
+│       │   │   └── staging/          # SILVER LAYER: Conformed staging views
+│       │   ├── seeds/
+│       │   ├── snapshots/
+│       │   ├── tests/
+│       │   ├── .gitignore
+│       │   ├── dbt_project.yml       # dbt project configuration
+│       │   ├── package-lock.yml
+│       │   ├── packages.yml          # External dbt packages
+│       │   └── README.md
+│       ├── src/                          # Custom Python scripts / BRONZE LAYER: Insert raw API response to staging table
 │   ├── plugins/                      # Custom Airflow plugins
 │   └── tests/                        # CI/CD pipeline unit tests
 ├── .dockerignore                     # Files excluded from Docker builds
