@@ -1,9 +1,8 @@
 import psycopg2
 from include.src.config import get_db_config
-from include.src.logger import get_logger, log_execution
+from include.src.logger import PipelineLogger, log_execution
 
-logger = get_logger(__name__)
-
+logger = PipelineLogger(__name__)
 
 @log_execution
 def dump_apidata(apidata_tuple):
